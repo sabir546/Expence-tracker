@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <title>Document</title>
+  <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login-Signup</title>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+    <section class="forms-section">
+      <h1 class="section-title">EXPENSE TRACKER</h1>
+      <div class="forms">
+        <div class="form-wrapper is-active">
+          <button type="button" class="switcher switcher-login">
+            Login
+            <span class="underline"></span>
+          </button>
+          <form action="/signin" method="post" class="form form-login">
+            <fieldset>
+              <legend>Please, enter your email and password for login.</legend>
+              <div class="input-block">
+                
+                <label for="login-email">Username</label>
+                <input name="username" id="login-email" type="text" >
+              </div>
+              <div class="input-block">
+                <label for="login-password">Password</label>
+                <input name="password" id="login-password" type="password">
+              </div>
+            </fieldset>
+            <button type="submit" class="btn-login">Login</button>
+            <a href="/forget"  class="forget" >Forget-password</a>
+          </form>
+        
+        </div>
+        <div class="form-wrapper">
+          <button type="button" class="switcher switcher-signup">
+            Sign Up
+            <span class="underline"></span>
+          </button>
+          <form action="/signup" method="post" class="form form-signup">
+            <fieldset>
+              <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+              <div class="input-block">
+
+                <div class="input-block">
+                  <label for="signup-password-confirm">Username</label>
+                  <input name="username" id="signup-password-confirm" type="text" >
+                </div>
+
+                <label for="signup-email">E-mail</label>
+                <input name="email" id="signup-email" type="email" >
+              </div>
+              <div class="input-block">
+                <label for="signup-password">Password</label>
+                <input name="password" id="signup-password" type="password" >
+              </div>
+              
+            </fieldset>
+            <button type="submit" class="btn-signup">Signup</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script src="/javascripts/index.js"></script>
+    </body>
+    </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/forget.css">
+  <title>Document</title>
+  <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login-Signup</title>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+    <section class="forms-section">
+      <h1 class="section-title">EXPENSE TRACKER</h1>
+      <div class="forms">
+        <div class="form-wrapper is-active">
+          <button type="button" class="switcher switcher-login">
+            Forget-password
+            <span class="underline"></span>
+          </button>
+          <form action="/send-mail" method="post" class="form form-login">
+            <fieldset>
+              <legend>Please, enter your email and password for login.</legend>
+              <div class="input-block">
+                
+                <label for="login-email">Email</label>
+                <input name="email" id="login-email" type="email" >
+              </div>
+              <!-- <div class="input-block">
+                <label for="login-password">New-Password</label>
+                <input name="newPassword" id="login-password" type="password">
+              </div> -->
+            </fieldset>
+            <button type="submit" class="btn-login">Send-OTP</button>
+            <a href="/signin"  class="signin" >Sign-in</a>
+
+          </form>
+        
+        </div>
+       
+      </div>
+    </section>
+
+    <script src="/javascripts/index.js"></script>
+    </body>
+    </html>

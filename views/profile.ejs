@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <title>Document</title>
+</head>
+<body>
+    <main class="main">
+		<form action="">
+			<input type="text" class="name" placeholder="Enter expense name" name="name">
+			<input type="date" class="expenseDate" placeholder="dd-mm-yyyy" name="date">
+			<input type="number" class="amount" placeholder="Enter Amount" name="expense">
+			<input type="submit" id="submitbtn" name="submit" value="Submit">
+		</form>
+		<div class="row">
+			<div class="selectOption">
+				<div class="selectElement">
+					<input type="checkbox" id="selectChecked" name="">
+					<label for="selectChecked">Select All</label>
+				</div>
+				<div class="deleteElement">
+					<a class="deleteBtn" href="#"> Delete</a>
+				</div>
+			</div>
+			<div class="searchBox">
+				<input type="text" name="search" placeholder="Search Name.." class="searchName">
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="expense-data">
+				<tbody>
+					<tr>
+						<th></th>
+						<th>Expense Name</th>
+						<th>Amount</th>
+						<th>Date</th>
+						<th>Action</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+
+
+    <script src="/javascripts/profile.js"></script>
+</body>
+</html>
