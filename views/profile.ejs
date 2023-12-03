@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,4 +46,136 @@
 
     <script src="/javascripts/profile.js"></script>
 </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets//profile.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="page1">
+    <div class="username">
+      <h1>👋 <%= admin.username %></h1>
+      <!-- <a href="/createexpense" id="create">Add New Expense</a> -->
+      <form action="/createexpense" method="post">
+        <input type="text" class="name" name="remark" placeholder="Remark" />
+        <input type="text" class="expenseDate" name="category" placeholder="Category" />
+        <input type="number" class="amount" name="amount" placeholder="Enter Amount" />
+        <select name="paymentMode" class="payment">
+          <option value="cash">Cash</option>
+          <option value="online">Online</option>
+          <option value="cheque">Cheque</option>
+        </select>
+        <button>Add Expense</button>
+      </form>
+
+    </div>
+    <!-- <hr> -->
+    <div id="filter">
+      <form action="/filter" class="filterform">
+        <select name="key" class="filter">
+          <option value="amount">Amount</option>
+          <option value="remark">Remark</option>
+
+          <option value="category">Category</option>
+
+          <option value="paymentMode">Payment Mode</option>
+
+          <option value="date">Date</option>
+        </select>
+        <input type="text" class="item" name="value" placeholder="Enter search term" id="">
+        <button>Filter</button>
+      </form>
+      <hr>
+
+      <h1>Sum: <%= expenses.reduce((ac,cv)=>ac+cv.amount,0)%> </h1>
+      <hr>
+
+      <div class="table-responsive">
+        <table class="expense-data">
+          <tbody>
+
+
+            <tr>
+
+              <th> Expense Name</th>
+
+              <th>Category</th>
+
+
+              <th>Amount</th>
+
+              <th>paymentMode</th>
+
+              <th>Date</th>
+			  <th>Option</th>
+
+            </tr>
+
+          </tbody>
+        </table>
+
+
+        <table class="expense-data1">
+
+
+          <!-- <tbody>
+
+
+
+	<tr class="tree">
+		<div class="th">
+	<% expenses.forEach(function(ele){ %>
+
+		<th class="th" ><%= ele.remark %></th>
+		
+		<th class="th"> <%= ele.category %></th>
+		<th  class="th"><%= ele.amount %></th>
+		<th  class="th"><%= ele.paymentMode %></th>
+		<th class="th" > <%= ele.createdAt.toString().split(' ').slice(1,4).join('-') %> </th>
+		
+		<a href="/delete/<%=ele._id%>">delete</a>
+		&nbsp;&nbsp;&nbsp;
+		<a href="/update/<%=ele._id%>">update</a>
+	
+		<%	}) %>
+		<br>
+	</div>
+	</tr>
+</tbody> -->
+          <tbody>
+            <% expenses.forEach(function (ele) { %>
+            <tr>
+              <td><%= ele.remark %></td>
+              <td><%= ele.category %></td>
+              <td><%= ele.amount %></td>
+              <td><%= ele.paymentMode %></td>
+              <td><%= ele.createdAt.toString().split(' ').slice(1, 4).join('-') %></td>
+              <td>
+                <a href="/delete/<%= ele._id %>">delete</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="/update/<%= ele._id %>">update</a>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+
+
+
+        </table>
+
+        <!-- <%= JSON.stringify(expenses) %> -->
+
+      </div>
+    </div>
+
+</body>
+
 </html>

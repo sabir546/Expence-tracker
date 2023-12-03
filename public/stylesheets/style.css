@@ -33,6 +33,7 @@ body {
 
 .section-title {
   font-size: 32px;
+  padding-top: 1rem;
   letter-spacing: 1px;
   color: #fff;
 }

@@ -17,17 +17,14 @@ const userSchema=new mongoose.Schema({
     type: String,
     
   },
-  newPassword: {
-    type: String,
-    
-  },
+  
   token:{
     type:Number,
     default:-1
   },
-  expences:[{
+  expenses:[{
     type:mongoose.Schema.Types.ObjectId,
-    ref:'expence'
+    ref:'expense'
   }]
 
 
@@ -35,8 +32,8 @@ const userSchema=new mongoose.Schema({
 
 {timestamps:true});
 
-userSchema.plugin(plm);
-// userModel.plugin(plm, { usernameField: "email" });
+// userSchema.plugin(plm);
+userSchema.plugin(plm, { usernameField: "email" });
 
 module.exports=mongoose.model("user", userSchema)
 

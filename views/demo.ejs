@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+    <title>Document</title>
+</head>
+<body>
+    <main class="main">
+        <form action="/createexpense" method="post">
+            <input type="text" class="name"  name="remark" placeholder="Remark" />
+            <input type="text" class="expenseDate" name="category" placeholder="Category" />
+            <input type="number" class="amount"  name="amount" placeholder="Enter Amount" />
+            <select name="paymentMode">
+                <option value="cash">Cash</option>
+                <option value="online">Online</option>
+                <option value="cheque">Cheque</option>
+            </select>
+            <button>Add Expense</button>
+        </form>
+		
+		<div class="row">
+			<div class="selectOption">
+				<div class="selectElement">
+					<input type="checkbox" id="selectChecked" name="">
+					<label for="selectChecked">Select All</label>
+				</div>
+				<div class="deleteElement">
+					<a class="deleteBtn" href="#"> Delete</a>
+				</div>
+			</div>
+			<div class="searchBox">
+				<input type="text" name="search" placeholder="Search Name.." class="searchName">
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="expense-data">
+				<tbody>
+					<tr>
+						<th></th>
+						<th>Expense Name</th>
+						<th>Amount</th>
+						<th>Date</th>
+						<th>Action</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</main>
+
+
+    
+</body>
+</html>

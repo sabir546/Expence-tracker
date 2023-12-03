@@ -2,12 +2,14 @@ var express = require('express');
 var router = express.Router();
 const passport=require('passport');
 const User=require('../models/database')
-const expense=require('../models/expenses')
+const Expense=require('../models/expenses')
 const localStrategy=require('passport-local');
 const { escapeXML } = require('ejs');
 passport.use(new localStrategy(User.authenticate()));
+const nodemailer=require('nodemailer')
 
 const { sendmail } = require("../utils.js/sendmail");
+const expenses = require('../models/expenses');
 
 /* GET home page. */
 
@@ -58,8 +60,15 @@ router.get('/signout',isLoggedIn, function(req, res, next) {
  })
 });
 
-router.get('/profile', isLoggedIn ,function(req, res, next) {
-  res.render('profile',{ admin: req.user });
+router.get("/profile", isLoggedIn, async function (req, res, next) {
+  try {
+      const user = await req.user.populate("expenses");
+      // console.log(req.user, expenses);
+     
+      res.render("profile", { admin: req.user,  expenses:user.expenses });
+  } catch (error) {
+      res.send(error);
+  }
 });
 
 router.get('/forget', function(req, res, next) {
@@ -91,16 +100,14 @@ router.post("/send-mail", async function (req, res, next) {
           return res.send("User Not Found! <a href='/forget'>Try Again</a>");
 
       sendmail(user.email, user, res, req);
-      res.redirect('/match-otp/:id')
+      // res.redirect('/match-otp')
   } catch (error) {
       console.log(error);
       res.send(error);
   }
 });
 
-router.get('/match-otp/:id', function(req, res, next) {
-  res.render('matchotp',{ user:User, admin: req.params.id });
-});
+
 
 router.post('/match-otp/:id', async function (req, res, next) {
   try {
@@ -124,7 +131,52 @@ router.post('/match-otp/:id', async function (req, res, next) {
   }
 });
 
+router.get('/createexpense', isLoggedIn, function(req, res, next) {
+  res.render('profile',{ admin: req.user });
+});
 
+
+router.post('/createexpense', isLoggedIn,async function(req, res, next) {
+  try {
+    const expense=new Expense(req.body)
+    req.user.expenses.push(expense._id)
+    expense.user=req.user._id;
+    await expense.save();
+    await req.user.save(); 
+    res.redirect('/profile')
+
+    
+  } catch (error) {
+    res.send(error)
+  }
+});
+
+router.get("/filter", async function (req, res, next) {
+  try {
+      let { expenses } = await req.user.populate("expenses");
+      expenses = expenses.filter((e) => e[req.query.key] == req.query.value);
+      res.render("profile", { admin: req.user, expenses });
+  } catch (error) {
+      console.log(error);
+      res.send(error);
+  }
+});
+
+
+router.get("/delete/:id", isLoggedIn, async function (req, res, next) {
+  try {
+      const PostIndex = req.user.expenses.findIndex(
+          (u) => u._id === req.params.id
+      );
+      req.user.expenses.splice(PostIndex, 1);
+      await req.user.save();
+
+      await Expense.findByIdAndDelete(req.params.id);
+      res.redirect("/profile");
+  } catch (error) {
+      res.send(error);
+  }
+});
 
 
 

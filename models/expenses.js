@@ -5,15 +5,12 @@ const expenseScheme = new mongoose.Schema({
 
     remark: String,
 
-    categories:
-    {
-        type: String,
-        // enum:['food','groceries','beaverages','travel','shopping','medical','']
-    },
+    category:String,
+    
 
     paymentMode: {
         type: String,
-        enum: ['Cash', 'Online', 'chek']
+        enum: ['cash', 'online', 'cheque']
     },
 
 
@@ -27,4 +24,4 @@ const expenseScheme = new mongoose.Schema({
     { timestamps: true },
 )
 
-module.exports = mongoose.model('expence', expenseScheme)
+module.exports = mongoose.model('expense', expenseScheme)

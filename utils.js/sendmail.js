@@ -32,6 +32,6 @@ exports.sendmail = function (email, user, res, req) {
         //     "<h1 style='text-align:center;color: tomato; margin-top:10%'><span style='font-size:60px;'>✔️</span> <br />Email Sent! Check your inbox , <br/>check spam in case not found in inbox.</h1>"
         // );
         console.log(req.user);
-        res.render("verify", { admin: req.user, id: user._id });
+        res.render("matchotp", { admin: req.user, id: user._id });
     });
 };
