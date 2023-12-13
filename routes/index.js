@@ -33,7 +33,7 @@ try {
   ,
   req.body.password
   );
-  res.redirect('/signin')
+  res.redirect('/')
 }
  catch (error) {
   console.log(error)
@@ -42,7 +42,7 @@ try {
 
 router.post('/signin',passport.authenticate('local',{
   successRedirect:'/profile',
-  failureRedirect:'/signin',
+  failureRedirect:'/',
 }), function(req, res, next) {});
 
 function isLoggedIn(req,res,next){
@@ -50,13 +50,13 @@ function isLoggedIn(req,res,next){
     next();
   }
   else(
-    res.redirect('/signin')
+    res.redirect('/')
   )
   
 }
 router.get('/signout',isLoggedIn, function(req, res, next) {
  req.logOut(()=>{
-  res.redirect('/singin')
+  res.redirect('/')
  })
 });
 
@@ -120,7 +120,7 @@ router.post('/match-otp/:id', async function (req, res, next) {
           user.token = -1;
           await user.setPassword(req.body.newpassword);
           await user.save();
-          res.redirect("/signin");
+          res.redirect("/");
       } else {
           user.token = -1;
           await user.save();
