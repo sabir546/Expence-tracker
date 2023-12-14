@@ -1,5 +1,5 @@
 const mongoose= require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/Expenses-track');
+mongoose.connect('mongodb+srv://mdgulamsabir9:JQOjbnrrL0iMvA57@cluster2.xbyw3f5.mongodb.net/?retryWrites=true&w=majority');
 const plm= require('passport-local-mongoose')
 
 const userSchema=new mongoose.Schema({

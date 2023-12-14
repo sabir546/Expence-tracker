@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Expense</title>
+</head>
+<body>
+<h1>Update Expense</h1>
+<form action="/update/<%= expense._id %>" method="post">
+<label for="name">Name:</label>
+<input type="text" id="name" name="remark" value="<%= expense.name %>" required>
+
+<label for="amount">Amount:</label>
+<input type="number" id="amount" name="amount" value="<%= expense.amount %>" required>
+
+<!-- Add other fields as needed -->
+<label for="category">category:</label>
+<input type="text" class="expenseDate" name="category" value="<%= expense.category %>" placeholder="Category" />
+
+<label for="paymentMode">paymentMode:</label>
+
+<select name="paymentMode" value="<%= expense.paymentMode %>" class="payment">
+  <option value="cash">Cash</option>
+  <option value="online">Online</option>
+  <option value="cheque">Cheque</option>
+</select>
+
+<button type="submit">Update Expense</button>
+</form>
+    
+</body>
+</html>

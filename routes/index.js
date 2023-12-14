@@ -179,5 +179,23 @@ router.get("/delete/:id", isLoggedIn, async function (req, res, next) {
 });
 
 
+router.get("/update/:id", isLoggedIn, async function (req, res, next) {
+  try {
+  const expense = await Expense.findById(req.params.id);
+  res.render("updateexpense", { admin: req.user, expense });
+  } catch (error) {
+  res.send(error);
+  }
+  });
+ 
+ router.post("/update/:id", isLoggedIn, async function (req, res, next) {
+  try {
+  const expense = await Expense.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  res.redirect("/profile");
+  } catch (error) {
+  res.send(error);
+  }
+  });
+
 
 module.exports = router;
